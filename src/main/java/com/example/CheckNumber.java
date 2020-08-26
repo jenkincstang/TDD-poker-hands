@@ -23,8 +23,10 @@ public class CheckNumber {
 
   private List<Pair> getPairs(List<Map.Entry<String, Integer>> list) {
     List<Pair> pairs = new ArrayList<>();
+
     list = list.stream().filter(item -> item.getValue() > 1).collect(Collectors.toList());
     list.forEach(item -> pairs.add(new Pair(item.getKey(), item.getValue())));
+
     return pairs;
   }
 
