@@ -44,6 +44,31 @@ public class CheckNumberTest {
     boolean result = checkNumber.isContinue(inputNumbers);
     //then
     Assert.assertEquals(result, false);
-
   }
+
+  @Test
+  void should_return_key_is_4_and_count_2_when_check_input_number_pair_given_AH_2S_4C_4H_KD(){
+    //given
+    InputNumber inputNumber1 = new InputNumber(14, "A", "H");
+    InputNumber inputNumber2 = new InputNumber(2, "2", "S");
+    InputNumber inputNumber3 = new InputNumber(4, "4", "C");
+    InputNumber inputNumber4 = new InputNumber(4, "4", "H");
+    InputNumber inputNumber5 = new InputNumber(13, "K", "D");
+    List<InputNumber> inputNumbers = new ArrayList<InputNumber>();
+    inputNumbers.add(inputNumber1);
+    inputNumbers.add(inputNumber2);
+    inputNumbers.add(inputNumber3);
+    inputNumbers.add(inputNumber4);
+    inputNumbers.add(inputNumber5);
+
+    CheckNumber checkNumber = new CheckNumber();
+    Pair expectPair = new Pair("4",2);
+    //when
+
+    Pair resultPair = checkNumber.checkPair(inputNumbers);
+
+    //then
+    Assert.assertEquals(expectPair,resultPair);
+  }
+
 }

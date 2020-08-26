@@ -1,7 +1,10 @@
 package com.example;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CheckNumber {
 
@@ -10,5 +13,24 @@ public class CheckNumber {
     Collections.sort(inputNumbers, comparatorInputNumber);
     int maxDifference = inputNumbers.get(4).getValue() - inputNumbers.get(0).getValue();
     return maxDifference == 4;
+  }
+
+  public Pair checkPair(List<InputNumber> inputNumbers) {
+    Map<String,Integer> map = new HashMap<String, Integer>();
+
+    for (InputNumber inputNumber : inputNumbers) {
+      if(map.containsKey(inputNumber.getKey())) {
+        map.put(inputNumber.getKey(), map.get(inputNumber.getKey()).intValue()+1);
+      }else {
+        map.put(inputNumber.getKey(), new Integer(1));
+      }
+    }
+
+    List<Map.Entry<String,Integer>> list = new ArrayList(map.entrySet());
+    list.sort((o1, o2) -> (o1.getValue() - o2.getValue()));
+    int count = list.get(list.size()-1).getValue();
+    String key = list.get(list.size()-1).getKey();
+
+    return new Pair(key,count);
   }
 }
