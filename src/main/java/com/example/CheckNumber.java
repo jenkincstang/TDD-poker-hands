@@ -16,31 +16,25 @@ public class CheckNumber {
 
   public List<Pair> checkPair(List<InputNumber> inputNumbers) {
     Map<String, Integer> map = getKeyCountMap(inputNumbers);
-
     List<Map.Entry<String, Integer>> list = new ArrayList(map.entrySet());
     list.sort((preObject, laterObject) -> (preObject.getValue() - laterObject.getValue()));
-
     return getPairs(list);
   }
 
   private List<Pair> getPairs(List<Map.Entry<String, Integer>> list) {
-    System.out.println(list);
     List<Pair> pairs = new ArrayList<>();
     list = list.stream().filter(item -> item.getValue() > 1).collect(Collectors.toList());
-    list.stream().forEach(item -> pairs.add(new Pair(item.getKey(), item.getValue())));
-    System.out.println(list);
-    System.out.println(pairs);
+    list.forEach(item -> pairs.add(new Pair(item.getKey(), item.getValue())));
     return pairs;
   }
 
   private Map<String, Integer> getKeyCountMap(List<InputNumber> inputNumbers) {
-    Map<String, Integer> map = new HashMap<String, Integer>();
-
+    Map<String, Integer> map = new HashMap<>();
     for (InputNumber inputNumber : inputNumbers) {
       if (map.containsKey(inputNumber.getKey())) {
-        map.put(inputNumber.getKey(), map.get(inputNumber.getKey()).intValue() + 1);
+        map.put(inputNumber.getKey(), map.get(inputNumber.getKey()) + 1);
       } else {
-        map.put(inputNumber.getKey(), new Integer(1));
+        map.put(inputNumber.getKey(), 1);
       }
     }
     return map;
