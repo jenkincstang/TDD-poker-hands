@@ -1,7 +1,6 @@
 package com.example;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,8 +8,7 @@ import java.util.Map;
 public class CheckNumber {
 
   public boolean isContinue(List<InputNumber> inputNumbers) {
-    ComparatorInputNumber comparatorInputNumber = new ComparatorInputNumber();
-    Collections.sort(inputNumbers, comparatorInputNumber);
+    inputNumbers.sort((preObject, laterObject) -> (preObject.getValue() - laterObject.getValue()));
     int maxDifference = inputNumbers.get(4).getValue() - inputNumbers.get(0).getValue();
     return maxDifference == 4;
   }
@@ -27,7 +25,7 @@ public class CheckNumber {
     }
 
     List<Map.Entry<String,Integer>> list = new ArrayList(map.entrySet());
-    list.sort((o1, o2) -> (o1.getValue() - o2.getValue()));
+    list.sort((preObject, laterObject) -> (preObject.getValue() - laterObject.getValue()));
     int count = list.get(list.size()-1).getValue();
     String key = list.get(list.size()-1).getKey();
 
