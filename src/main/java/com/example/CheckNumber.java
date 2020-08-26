@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CheckNumber {
 
@@ -13,25 +14,32 @@ public class CheckNumber {
     return maxDifference == 4;
   }
 
-  public Pair checkPair(List<InputNumber> inputNumbers) {
+  public List<Pair> checkPair(List<InputNumber> inputNumbers) {
     Map<String, Integer> map = getKeyCountMap(inputNumbers);
 
-    List<Map.Entry<String,Integer>> list = new ArrayList(map.entrySet());
+    List<Map.Entry<String, Integer>> list = new ArrayList(map.entrySet());
     list.sort((preObject, laterObject) -> (preObject.getValue() - laterObject.getValue()));
 
-    int count = list.get(list.size()-1).getValue();
-    String key = list.get(list.size()-1).getKey();
+    return getPairs(list);
+  }
 
-    return new Pair(key,count);
+  private List<Pair> getPairs(List<Map.Entry<String, Integer>> list) {
+    System.out.println(list);
+    List<Pair> pairs = new ArrayList<>();
+    list = list.stream().filter(item -> item.getValue() > 1).collect(Collectors.toList());
+    list.stream().forEach(item -> pairs.add(new Pair(item.getKey(), item.getValue())));
+    System.out.println(list);
+    System.out.println(pairs);
+    return pairs;
   }
 
   private Map<String, Integer> getKeyCountMap(List<InputNumber> inputNumbers) {
-    Map<String,Integer> map = new HashMap<String, Integer>();
+    Map<String, Integer> map = new HashMap<String, Integer>();
 
     for (InputNumber inputNumber : inputNumbers) {
-      if(map.containsKey(inputNumber.getKey())) {
-        map.put(inputNumber.getKey(), map.get(inputNumber.getKey()).intValue()+1);
-      }else {
+      if (map.containsKey(inputNumber.getKey())) {
+        map.put(inputNumber.getKey(), map.get(inputNumber.getKey()).intValue() + 1);
+      } else {
         map.put(inputNumber.getKey(), new Integer(1));
       }
     }
