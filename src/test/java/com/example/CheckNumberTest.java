@@ -47,6 +47,28 @@ public class CheckNumberTest {
   }
 
   @Test
+  void should_return_ture_when_check_input_numbers_continuous_given_2S_3H_4C_5D_6D() {
+    //given
+    InputNumber inputNumber1 = new InputNumber(2, "2", "S");
+    InputNumber inputNumber2 = new InputNumber(3, "3", "H");
+    InputNumber inputNumber3 = new InputNumber(4, "4", "C");
+    InputNumber inputNumber4 = new InputNumber(5, "5", "D");
+    InputNumber inputNumber5 = new InputNumber(6, "6", "D");
+    List<InputNumber> inputNumbers = new ArrayList<InputNumber>();
+    inputNumbers.add(inputNumber1);
+    inputNumbers.add(inputNumber2);
+    inputNumbers.add(inputNumber3);
+    inputNumbers.add(inputNumber4);
+    inputNumbers.add(inputNumber5);
+
+    CheckNumber checkNumber = new CheckNumber();
+    //when
+    boolean result = checkNumber.isContinue(inputNumbers);
+    //then
+    Assert.assertEquals(result, true);
+  }
+
+  @Test
   void should_return_key_is_4_and_count_2_when_check_input_number_pair_given_AH_2S_4C_4H_KD() {
     //given
     InputNumber inputNumber1 = new InputNumber(14, "A", "H");
