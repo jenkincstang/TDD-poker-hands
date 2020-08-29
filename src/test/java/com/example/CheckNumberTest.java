@@ -169,4 +169,29 @@ public class CheckNumberTest {
     //then
     Assert.assertEquals(result, false);
   }
+
+  @Test
+  void should_return_true_when_check_input_number_is_straight_flush_given_2H_3H_4H_5H_6H() {
+    //given
+    InputNumber inputNumber1 = new InputNumber(2, "2", "H");
+    InputNumber inputNumber2 = new InputNumber(3, "3", "H");
+    InputNumber inputNumber3 = new InputNumber(4, "4", "H");
+    InputNumber inputNumber4 = new InputNumber(5, "5", "H");
+    InputNumber inputNumber5 = new InputNumber(6, "6", "H");
+    List<InputNumber> inputNumbers = new ArrayList<InputNumber>();
+    inputNumbers.add(inputNumber1);
+    inputNumbers.add(inputNumber2);
+    inputNumbers.add(inputNumber3);
+    inputNumbers.add(inputNumber4);
+    inputNumbers.add(inputNumber5);
+
+    CheckNumber checkNumber = new CheckNumber();
+
+    //when
+    boolean result = checkNumber.isStraightFlush(inputNumbers);
+
+    //then
+    Assert.assertEquals(result, true);
+  }
+
 }

@@ -46,4 +46,8 @@ public class CheckNumber {
     String type = inputNumbers.get(0).getType();
     return inputNumbers.stream().allMatch(item -> item.getType().equals(type));
   }
+
+  public boolean isStraightFlush(List<InputNumber> inputNumbers) {
+    return isContinue(inputNumbers) && isFlush(inputNumbers);
+  }
 }
