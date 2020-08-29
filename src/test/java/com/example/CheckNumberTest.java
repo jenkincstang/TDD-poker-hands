@@ -123,4 +123,28 @@ public class CheckNumberTest {
     //then
     Assert.assertEquals(result, true);
   }
+
+  @Test
+  void should_return_false_when_check_input_number_is_flush_given_2S_3H_4H_4H_KH() {
+    //given
+    InputNumber inputNumber1 = new InputNumber(2, "2", "S");
+    InputNumber inputNumber2 = new InputNumber(3, "3", "H");
+    InputNumber inputNumber3 = new InputNumber(4, "4", "H");
+    InputNumber inputNumber4 = new InputNumber(4, "4", "H");
+    InputNumber inputNumber5 = new InputNumber(13, "K", "H");
+    List<InputNumber> inputNumbers = new ArrayList<InputNumber>();
+    inputNumbers.add(inputNumber1);
+    inputNumbers.add(inputNumber2);
+    inputNumbers.add(inputNumber3);
+    inputNumbers.add(inputNumber4);
+    inputNumbers.add(inputNumber5);
+
+    CheckNumber checkNumber = new CheckNumber();
+
+    //when
+    boolean result = checkNumber.isFlush(inputNumbers);
+
+    //then
+    Assert.assertEquals(result, false);
+  }
 }
