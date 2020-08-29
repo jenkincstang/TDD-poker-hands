@@ -41,4 +41,9 @@ public class CheckNumber {
     }
     return map;
   }
+
+  public boolean isFlush(List<InputNumber> inputNumbers) {
+    String type = inputNumbers.get(0).getType();
+    return inputNumbers.stream().allMatch(item -> item.getType().equals(type));
+  }
 }
