@@ -226,4 +226,41 @@ public class CompareInputNumberTest {
     //then
     Assert.assertEquals(result,expectResult);
   }
+
+  @Test
+  void should_return_white_wins_when_compare_two_input_number_equal_priority_given_black_3H_4H_2H_KH_5H_and_white_4H_5H_2H_8H_6H(){
+    //given
+    InputNumber inputNumber1 = new InputNumber(3, "3", "H");
+    InputNumber inputNumber2 = new InputNumber(4, "4", "H");
+    InputNumber inputNumber3 = new InputNumber(2, "2", "H");
+    InputNumber inputNumber4 = new InputNumber(13, "K", "H");
+    InputNumber inputNumber5 = new InputNumber(5, "5", "H");
+    List<InputNumber> blackInputNumber = new ArrayList<InputNumber>();
+    blackInputNumber.add(inputNumber1);
+    blackInputNumber.add(inputNumber2);
+    blackInputNumber.add(inputNumber3);
+    blackInputNumber.add(inputNumber4);
+    blackInputNumber.add(inputNumber5);
+
+
+    InputNumber inputNumber11 = new InputNumber(4, "4", "H");
+    InputNumber inputNumber22 = new InputNumber(5, "5", "H");
+    InputNumber inputNumber33 = new InputNumber(2, "2", "H");
+    InputNumber inputNumber44 = new InputNumber(8, "8", "H");
+    InputNumber inputNumber55 = new InputNumber(6, "6", "H");
+    List<InputNumber> whiteInputNumber = new ArrayList<InputNumber>();
+    whiteInputNumber.add(inputNumber11);
+    whiteInputNumber.add(inputNumber22);
+    whiteInputNumber.add(inputNumber33);
+    whiteInputNumber.add(inputNumber44);
+    whiteInputNumber.add(inputNumber55);
+
+    String expectResult = "Black wins. - with high card: K";
+
+    CompareInputNumber compareInputNumber = new CompareInputNumber();
+    //when
+    String result = compareInputNumber.compareEqualPriority(blackInputNumber,whiteInputNumber);
+    //then
+    Assert.assertEquals(result,expectResult);
+  }
 }

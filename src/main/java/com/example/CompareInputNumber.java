@@ -45,6 +45,8 @@ public class CompareInputNumber {
   }
 
 
+
+
   public String compareNotEqualPriority(List<InputNumber> blackInputNumber, List<InputNumber> whiteInputNumber) {
     int blackPriority = checkNumber.checkPriority(blackInputNumber);
     int whitePriority = checkNumber.checkPriority(whiteInputNumber);
@@ -52,11 +54,12 @@ public class CompareInputNumber {
   }
 
   public String compareEqualPriority(List<InputNumber> blackInputNumber, List<InputNumber> whiteInputNumber) {
-    Integer[] priorities = {2,3,4,7,8};
+    Integer[] priorities1 = {2,3,4,7,8};
+    Integer[] priorities2 = {1,5,6,9};
     int priority = checkNumber.checkPriority(blackInputNumber);
-    if(priority == 1){
+    if(Arrays.asList(priorities2).contains(priority)){
       return compareHighCard(blackInputNumber, whiteInputNumber);
-    }else if (Arrays.asList(priorities).contains(priority)){
+    }else if (Arrays.asList(priorities1).contains(priority)){
       return comparePair(blackInputNumber,whiteInputNumber);
     }
     return "Tie";
