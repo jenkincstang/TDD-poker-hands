@@ -1,11 +1,12 @@
 package com.example;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class CompareInputNumber {
-  private  CheckNumber checkNumber = new CheckNumber();
+  private final CheckNumber checkNumber = new CheckNumber();
 
-  public static String compareHighCard(List<InputNumber> blackInputNumber, List<InputNumber> whiteInputNumber) {
+  public String compareHighCard(List<InputNumber> blackInputNumber, List<InputNumber> whiteInputNumber) {
     String winner = "";
     String highCard = "";
     for (int i = blackInputNumber.size() - 1; i >= 0; i--) {
@@ -20,13 +21,15 @@ public class CompareInputNumber {
        }
     }
     return "Tie";
-
   }
 
 
-  public static String comparePair(List<Pair> blackPairs, List<Pair> whitePairs) {
+  public  String comparePair(List<InputNumber> blackInputNumber, List<InputNumber> whiteInputNumber) {
     String winner = "";
     String highCard = "";
+    List<Pair> blackPairs = checkNumber.checkPair(blackInputNumber);
+    List<Pair> whitePairs = checkNumber.checkPair(whiteInputNumber);
+
     for (int i = blackPairs.size() - 1; i >= 0; i--) {
       if(blackPairs.get(i).getValue() > whitePairs.get(i).getValue()){
         winner = "Black";
@@ -38,7 +41,7 @@ public class CompareInputNumber {
         return winner+" wins. - with Pair of: "+highCard;
       }
     }
-    return "Tie";
+    return compareHighCard(blackInputNumber,blackInputNumber);
   }
 
 
@@ -46,5 +49,16 @@ public class CompareInputNumber {
     int blackPriority = checkNumber.checkPriority(blackInputNumber);
     int whitePriority = checkNumber.checkPriority(whiteInputNumber);
     return blackPriority > whitePriority ? "Black wins" : "White wins";
+  }
+
+  public String compareEqualPriority(List<InputNumber> blackInputNumber, List<InputNumber> whiteInputNumber) {
+    Integer[] priorities = {2,3,4,7,8};
+    int priority = checkNumber.checkPriority(blackInputNumber);
+    if(priority == 1){
+      return compareHighCard(blackInputNumber, whiteInputNumber);
+    }else if (Arrays.asList(priorities).contains(priority)){
+      return comparePair(blackInputNumber,whiteInputNumber);
+    }
+    return "Tie";
   }
 }
