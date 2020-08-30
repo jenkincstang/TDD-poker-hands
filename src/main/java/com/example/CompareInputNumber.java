@@ -3,7 +3,7 @@ package com.example;
 import java.util.List;
 
 public class CompareInputNumber {
-  private static CheckNumber checkNumber = new CheckNumber();
+  private  CheckNumber checkNumber = new CheckNumber();
 
   public static String compareHighCard(List<InputNumber> blackInputNumber, List<InputNumber> whiteInputNumber) {
     String winner = "";
@@ -42,4 +42,9 @@ public class CompareInputNumber {
   }
 
 
+  public String compareNotEqualPriority(List<InputNumber> blackInputNumber, List<InputNumber> whiteInputNumber) {
+    int blackPriority = checkNumber.checkPriority(blackInputNumber);
+    int whitePriority = checkNumber.checkPriority(whiteInputNumber);
+    return blackPriority > whitePriority ? "Black wins" : "White wins";
+  }
 }

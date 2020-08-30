@@ -69,7 +69,8 @@ public class CheckNumber {
   }
 
   public boolean isFourOfAKind(List<InputNumber> inputNumbers) {
-    return checkPair(inputNumbers).get(0).getCount() == 4;
+    List<Pair> pairs = checkPair(inputNumbers);
+    return pairs.size() == 1 && pairs.get(0).getCount() == 4;
   }
 
   public boolean isPair(List<InputNumber> inputNumbers) {
