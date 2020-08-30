@@ -76,8 +76,9 @@ public class CompareInputNumberTest {
     //then
     Assert.assertEquals(result,expectResult);
   }
+
 //  @Test
-//  void should_return_black_wins_when_compare_two_input_number_given_black_2H_3D_5S_9C_KD_and_white_2C_3H_4S_8C_AH(){
+//  void should_return_priority_5_when_compare_two_input_number_given_black_2H_3D_5S_9C_KD_and_white_2C_3H_4S_8C_AH(){
 //    //given
 //    InputNumber inputNumber1 = new InputNumber(2, "2", "H");
 //    InputNumber inputNumber2 = new InputNumber(3, "3", "D");

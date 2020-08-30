@@ -52,7 +52,9 @@ public class CheckNumber {
   }
 
   public boolean isTwoPair(List<InputNumber> inputNumbers) {
-     return checkPair(inputNumbers).size() == 2;
+    List<Pair> pairs = checkPair(inputNumbers);
+    int sum = pairs.stream().mapToInt(Pair::getCount).sum();
+    return pairs.size() == 2 && sum < inputNumbers.size();
   }
 
   public boolean isThreeOfAKind(List<InputNumber> inputNumbers) {
@@ -69,4 +71,35 @@ public class CheckNumber {
   public boolean isFourOfAKind(List<InputNumber> inputNumbers) {
     return checkPair(inputNumbers).get(0).getCount() == 4;
   }
+
+  public boolean isPair(List<InputNumber> inputNumbers) {
+    List<Pair> pairs = checkPair(inputNumbers);
+    return pairs.size() == 1 && pairs.get(0).getCount() == 2;
+  }
+
+
+  public int checkPriority(List<InputNumber> inputNumbers) {
+     int priority = 1;
+     if (isStraightFlush(inputNumbers)){
+       priority = 9;
+     }else if(isFourOfAKind(inputNumbers)){
+       priority = 8;
+     }else if(isFullHouse(inputNumbers)){
+       priority = 7;
+     }else if (isFlush(inputNumbers)){
+       priority = 6;
+     }else if (isContinue(inputNumbers)){
+       priority = 5;
+     }else if (isThreeOfAKind(inputNumbers)){
+       priority = 4;
+     }else if (isTwoPair(inputNumbers)){
+       priority = 3;
+     }else if(isPair(inputNumbers)){
+       priority = 2;
+     }
+
+     return priority;
+  }
+
+
 }
