@@ -65,4 +65,8 @@ public class CheckNumber {
     int sum = pairs.stream().mapToInt(Pair::getCount).sum();
     return pairs.size() == 2 && sum == inputNumbers.size() ;
   }
+
+  public boolean isFourOfAKind(List<InputNumber> inputNumbers) {
+    return checkPair(inputNumbers).get(0).getCount() == 4;
+  }
 }
