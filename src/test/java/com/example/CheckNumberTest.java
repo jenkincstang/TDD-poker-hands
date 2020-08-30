@@ -43,7 +43,7 @@ public class CheckNumberTest {
     //when
     boolean result = checkNumber.isContinue(inputNumbers);
     //then
-    Assert.assertEquals(result, false);
+    Assert.assertFalse(result);
   }
 
   @Test
@@ -65,7 +65,7 @@ public class CheckNumberTest {
     //when
     boolean result = checkNumber.isContinue(inputNumbers);
     //then
-    Assert.assertEquals(result, true);
+    Assert.assertTrue(result);
   }
 
   @Test
@@ -143,7 +143,7 @@ public class CheckNumberTest {
     boolean result = checkNumber.isFlush(inputNumbers);
 
     //then
-    Assert.assertEquals(result, true);
+    Assert.assertTrue(result);
   }
 
   @Test
@@ -167,7 +167,7 @@ public class CheckNumberTest {
     boolean result = checkNumber.isFlush(inputNumbers);
 
     //then
-    Assert.assertEquals(result, false);
+    Assert.assertFalse(result);
   }
 
   @Test
@@ -191,7 +191,7 @@ public class CheckNumberTest {
     boolean result = checkNumber.isStraightFlush(inputNumbers);
 
     //then
-    Assert.assertEquals(result, true);
+    Assert.assertTrue(result);
   }
 
   @Test
@@ -215,7 +215,7 @@ public class CheckNumberTest {
     boolean result = checkNumber.isStraightFlush(inputNumbers);
 
     //then
-    Assert.assertEquals(result, false);
+    Assert.assertFalse(result);
   }
 
   @Test
@@ -239,7 +239,7 @@ public class CheckNumberTest {
     boolean result = checkNumber.isStraightFlush(inputNumbers);
 
     //then
-    Assert.assertEquals(result, false);
+    Assert.assertFalse(result);
   }
 
 }
