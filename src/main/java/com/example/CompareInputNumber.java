@@ -7,6 +7,10 @@ public class CompareInputNumber {
   private final CheckNumber checkNumber = new CheckNumber();
 
   public String compareHighCard(List<InputNumber> blackInputNumber, List<InputNumber> whiteInputNumber) {
+
+    blackInputNumber.sort((preObject, laterObject) -> (preObject.getValue() - laterObject.getValue()));
+    whiteInputNumber.sort((preObject, laterObject) -> (preObject.getValue() - laterObject.getValue()));
+
     String winner = "";
     String highCard = "";
     for (int i = blackInputNumber.size() - 1; i >= 0; i--) {
@@ -41,7 +45,7 @@ public class CompareInputNumber {
         return winner+" wins. - with Pair of: "+highCard;
       }
     }
-    return compareHighCard(blackInputNumber,blackInputNumber);
+    return compareHighCard(blackInputNumber,whiteInputNumber);
   }
 
 
