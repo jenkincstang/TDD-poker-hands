@@ -15,7 +15,7 @@ public class CheckNumber {
   }
 
   public List<Pair> checkPair(List<InputNumber> inputNumbers) {
-    Map<String, Integer> map = getKeyCountMap(inputNumbers);
+    Map<String,Integer> map = getKeyCountMap(inputNumbers);
     List<Map.Entry<String, Integer>> list = new ArrayList(map.entrySet());
     list.sort((preObject, laterObject) -> (preObject.getValue() - laterObject.getValue()));
     return getPairs(list);

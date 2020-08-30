@@ -2,11 +2,32 @@ package com.example;
 
 public class Pair {
   private String key;
+  private Integer value;
   private Integer count;
 
   public Pair(String key, Integer count) {
     this.key = key;
-    this.count = count;
+    this.value = count;
+  }
+
+  public Integer getValue() {
+    switch (this.key) {
+      case "J":
+        return 10;
+      case "Q":
+        return 11;
+      case "K":
+        return 12;
+      case "A":
+        return 13;
+      default:
+        return Integer.parseInt(this.key);
+    }
+
+  }
+
+  public void setValue(Integer value) {
+    this.value = value;
   }
 
   public String getKey() {
