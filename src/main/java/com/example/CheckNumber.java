@@ -59,4 +59,10 @@ public class CheckNumber {
     List<Pair> pairs = checkPair(inputNumbers);
     return pairs.size() == 1 && pairs.get(0).getCount() == 3;
   }
+
+  public boolean isFullHouse(List<InputNumber> inputNumbers) {
+    List<Pair> pairs = checkPair(inputNumbers);
+    int sum = pairs.stream().mapToInt(Pair::getCount).sum();
+    return pairs.size() == 2 && sum == inputNumbers.size() ;
+  }
 }
