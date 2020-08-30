@@ -50,4 +50,8 @@ public class CheckNumber {
   public boolean isStraightFlush(List<InputNumber> inputNumbers) {
     return isContinue(inputNumbers) && isFlush(inputNumbers);
   }
+
+  public boolean isTwoPair(List<InputNumber> inputNumbers) {
+     return checkPair(inputNumbers).size() == 2;
+  }
 }
