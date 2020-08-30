@@ -54,4 +54,9 @@ public class CheckNumber {
   public boolean isTwoPair(List<InputNumber> inputNumbers) {
      return checkPair(inputNumbers).size() == 2;
   }
+
+  public boolean isThreeOfAKind(List<InputNumber> inputNumbers) {
+    List<Pair> pairs = checkPair(inputNumbers);
+    return pairs.size() == 1 && pairs.get(0).getCount() == 3;
+  }
 }

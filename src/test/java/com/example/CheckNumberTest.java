@@ -265,6 +265,29 @@ public class CheckNumberTest {
     //then
     Assert.assertTrue(result);
   }
+  @Test
+  void should_return_true_when_check_input_number_is_three_of_a_kind_given_3H_3H_3H_5H_6D() {
+    //given
+    InputNumber inputNumber1 = new InputNumber(3, "3", "H");
+    InputNumber inputNumber2 = new InputNumber(3, "3", "H");
+    InputNumber inputNumber3 = new InputNumber(3, "3", "H");
+    InputNumber inputNumber4 = new InputNumber(5, "5", "H");
+    InputNumber inputNumber5 = new InputNumber(6, "6", "D");
+    List<InputNumber> inputNumbers = new ArrayList<InputNumber>();
+    inputNumbers.add(inputNumber1);
+    inputNumbers.add(inputNumber2);
+    inputNumbers.add(inputNumber3);
+    inputNumbers.add(inputNumber4);
+    inputNumbers.add(inputNumber5);
+
+    CheckNumber checkNumber = new CheckNumber();
+
+    //when
+    boolean result = checkNumber.isThreeOfAKind(inputNumbers);
+
+    //then
+    Assert.assertTrue(result);
+  }
 
 
 }

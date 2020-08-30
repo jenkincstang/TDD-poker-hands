@@ -2,12 +2,11 @@ package com.example;
 
 public class Pair {
   private String key;
-  private Integer value;
   private Integer count;
 
   public Pair(String key, Integer count) {
     this.key = key;
-    this.value = count;
+    this.count = count;
   }
 
   public Integer getValue() {
@@ -26,24 +25,12 @@ public class Pair {
 
   }
 
-  public void setValue(Integer value) {
-    this.value = value;
-  }
-
   public String getKey() {
     return key;
   }
 
-  public void setKey(String key) {
-    this.key = key;
-  }
-
   public Integer getCount() {
     return count;
-  }
-
-  public void setCount(Integer count) {
-    this.count = count;
   }
 
   @Override
